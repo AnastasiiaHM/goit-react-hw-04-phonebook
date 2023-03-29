@@ -1,18 +1,7 @@
-import { useState, useEffect } from 'react';
+import useLocalStorage from 'components/LocalStorage';
 import PropTypes from 'prop-types';
 
 import { StyledForm, Input, Label, Button } from '../Form/Form.styled';
-
-const useLocalStorage = (key, defaultValue) => {
-  const [state, setState] = useState(() => {
-    return JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
-  });
-  useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(state));
-  }, [key, state]);
-
-  return [state, setState];
-};
 
 export default function Form({ onSubmit }) {
   const [name, setName] = useLocalStorage('name', '');

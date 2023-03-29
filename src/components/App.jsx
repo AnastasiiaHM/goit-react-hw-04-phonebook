@@ -4,9 +4,10 @@ import { Contacts } from '../components/Contacts/Contacts';
 import Form from './Form/Form';
 import { Container, Title } from './App.styled';
 import { nanoid } from 'nanoid';
+import useLocalStorage from './LocalStorage';
 
 export default function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useLocalStorage('contact', []);
   const [filter, setFilter] = useState('');
 
   const addContactToState = ({ name, number }) => {
